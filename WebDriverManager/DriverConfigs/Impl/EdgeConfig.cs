@@ -78,6 +78,11 @@ namespace WebDriverManager.DriverConfigs.Impl
             {
                 return RegistryHelper.GetInstalledBrowserVersionWin("msedge.exe");
             }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return RegistryHelper.GetInstalledBrowserVersionLinux("microsoft-edge", "--version");
+            }
 
             throw new PlatformNotSupportedException("Your operating system is not supported");
 #else
